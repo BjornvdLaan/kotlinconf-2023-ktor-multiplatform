@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-ktor-jvm
+  labels:
+    app: ktor-jvm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ktor-jvm
+  template:
+    metadata:
+      labels:
+        app: ktor-jvm
+    spec:
+      containers:
+        - name: ktor-jvm
+          image: ktor-jvm:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080

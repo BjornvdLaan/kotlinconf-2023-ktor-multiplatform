@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-ktor-native
+  labels:
+    app: ktor-native
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ktor-native
+  template:
+    metadata:
+      labels:
+        app: ktor-native
+    spec:
+      containers:
+        - name: ktor-native
+          image: ktor-native:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080

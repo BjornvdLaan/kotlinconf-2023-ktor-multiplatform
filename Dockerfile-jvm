@@ -1,0 +1,5 @@
+FROM eclipse-temurin:17
+EXPOSE 8080:8080
+RUN mkdir /app
+COPY ./build/libs/ktor-multiplatform-jvm-*.jar /app/ktor.jar
+ENTRYPOINT ["java","-jar","/app/ktor.jar"]
