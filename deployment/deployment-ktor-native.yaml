@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: ktor-native
-          image: ktor-native:latest
+          image: ktor-native:v1.0.0
           imagePullPolicy: Never
           ports:
             - containerPort: 8080

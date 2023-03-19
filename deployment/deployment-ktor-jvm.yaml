@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: ktor-jvm
-          image: ktor-jvm:latest
+          image: ktor-jvm:v1.0.0
           imagePullPolicy: Never
           ports:
             - containerPort: 8080
