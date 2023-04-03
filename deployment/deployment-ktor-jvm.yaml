@@ -18,5 +18,9 @@ spec:
         - name: ktor-jvm
           image: ktor-jvm:v1.0.0
           imagePullPolicy: Never
+          readinessProbe:
+            httpGet:
+              path: /greeting
+              port: 8080
           ports:
             - containerPort: 8080
