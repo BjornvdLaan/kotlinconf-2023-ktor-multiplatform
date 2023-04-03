@@ -5,7 +5,6 @@ val logback_version: String by project
 
 plugins {
     kotlin("multiplatform") version "1.7.20"
-    //application
     id("io.ktor.plugin") version "2.2.4"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.7.20"
 }
@@ -37,14 +36,6 @@ tasks.withType<Jar> {
 }
 
 kotlin {
-    linuxX64 {
-        binaries {
-            executable {
-                entryPoint = "nl.bjornvanderlaan.main"
-            }
-        }
-    }
-
     jvm {
         compilations.all {
             kotlinOptions.jvmTarget = "1.8"
@@ -54,6 +45,15 @@ kotlin {
             useJUnitPlatform()
         }
     }
+
+    linuxX64 {
+        binaries {
+            executable {
+                entryPoint = "nl.bjornvanderlaan.main"
+            }
+        }
+    }
+
     sourceSets {
         val commonMain by getting {
             dependencies {
