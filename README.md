@@ -41,15 +41,15 @@ minikube service prometheus-kube-prometheus-prometheus --url
 ```
 
 ```
-label_replace(
-(kube_pod_status_container_ready_time - kube_pod_start_time)* on (pod) kube_pod_info{pod=~"deployment-ktor-jvm-.+|deployment-ktor-native-.+"}, 
-"type", "$1", "pod", "deployment-ktor-(.+)-[a-z0-9]+-[a-z0-9]+"
-)
+(kube_pod_status_container_ready_time - kube_pod_start_time)* on (pod) kube_pod_info{pod=~"deployment-ktor-jvm-.+|deployment-ktor-native-.+"}
 ```
 
 ```
-label_replace(
-  (container_memory_working_set_bytes)* on (pod) kube_pod_info{pod=~"deployment-ktor-jvm-.+|deployment-ktor-native-.+"}, 
-  "type", "$1", "pod", "deployment-ktor-(.+)-[a-z0-9]+-[a-z0-9]+"
-  )
+(container_memory_working_set_bytes)* on (pod) kube_pod_info{pod=~"deployment-ktor-jvm-.+|deployment-ktor-native-.+"}
+```
+
+```
+sum(
+    rate(container_cpu_usage_seconds_total[5m])
+) by (pod) * on (pod) kube_pod_info{pod=~"deployment-ktor-jvm-.+|deployment-ktor-native-.+"}
 ```
