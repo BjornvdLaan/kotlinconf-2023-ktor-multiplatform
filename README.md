@@ -37,12 +37,10 @@ minikube service prometheus-kube-prometheus-prometheus --url
 
 ## Load test with Ddosify
 ```
- ddosify -t http://[host]:[port]/cat/{{_randomInt}} -d 5 -n 500
-```
+ ddosify -t http://127.0.0.1:[port]/cat/{{_randomInt}} -d 60 -n 1000 -l incremental
+ ```
 
-```
-(kube_pod_status_container_ready_time - kube_pod_start_time)* on (pod) kube_pod_info{pod=~"deployment-ktor-jvm-.+|deployment-ktor-native-.+"}
-```
+## PromQL (Prometheus)
 
 ```
 (container_memory_working_set_bytes)* on (pod) kube_pod_info{pod=~"deployment-ktor-jvm-.+|deployment-ktor-native-.+"}
