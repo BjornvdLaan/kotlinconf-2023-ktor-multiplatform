@@ -1,5 +1,5 @@
 # Ktor on JVM and Native (linux) in Docker and Kubernetes
-This repository contains materials for my upcoming KotlinConf 2023 talk. Have a look, but don't tell your friends yet ;)
+This repository contains materials for my KotlinConf 2023 talk.
 
 The instructions below are based on Minikube and Ddosify.
 
